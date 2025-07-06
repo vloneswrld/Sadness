@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sadness - For Ameer 💙</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #a3c4f3;
+    font-family: 'Comfortaa', cursive, sans-serif;
+    color: #1c2f5a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  .container {
+    max-width: 500px;
+    background: rgba(255 255 255 / 0.85);
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(28,47,90,0.2);
+    position: relative;
+    z-index: 2;
+  }
+  h1 {
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 2.2rem;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+  }
+  button {
+    background-color: #3467c2;
+    border: none;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    user-select: none;
+  }
+  button:hover {
+    background-color: #274b8b;
+  }
+
+  /* Raindrops */
+  .raindrop {
+    position: fixed;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    pointer-events: none;
+    animation-name: fall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(-20px);
+      opacity: 0.6;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  /* Hug message & emojis container */
+  #hugContainer {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #274b8b;
+    display: none;
+    user-select: none;
+  }
+  #hugEmojis {
+    font-size: 2.5rem;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container" id="content">
+  <h1>Hey baby,</h1>
+  <p id="message">
+    I know sometimes things get heavy and sad. I just want you to remember I’m always here for you, no matter what. You’re not alone in this — I love you so much and I hope this little corner brings you some peace and warmth. When you’re feeling down, just click the hug button, and I’ll send you all my love and the biggest virtual hug 💙
+  </p>
+  <button id="hugBtn">Click for a hug by Tash</button>
+
+  <div id="hugContainer" aria-live="polite" role="alert">
+    <div id="hugMessage">Awww here you go baby *hug*</div>
+    <div id="hugEmojis" aria-label="hug emojis">🧸 ❤️</div>
+  </div>
+</div>
+
+<script>
+  const hugBtn = document.getElementById('hugBtn');
+  const hugContainer = document.getElementById('hugContainer');
+
+  hugBtn.addEventListener('click', () => {
+    hugContainer.style.display = 'block';
+    hugBtn.disabled = true;
+    hugBtn.style.cursor = 'default';
+    hugBtn.style.backgroundColor = '#6a8de3';
+  });
+
+  // Raindrops creation
+  const createRaindrop = () => {
+    const drop = document.createElement('div');
+    drop.classList.add('raindrop');
+    const size = Math.random() * 7 + 3;
+    drop.style.width = size + 'px';
+    drop.style.height = size * 2 + 'px';
+    drop.style.left = Math.random() * window.innerWidth + 'px';
+    drop.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    drop.style.animationDelay = Math.random() * 5 + 's';
+    document.body.appendChild(drop);
+    setTimeout(() => drop.remove(), 7000);
+  };
+  setInterval(createRaindrop, 300);
+</script>
+
+</body>
+</html>
